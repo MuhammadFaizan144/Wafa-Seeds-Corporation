@@ -7,6 +7,7 @@ import Publications from './pages/Publications'
 import Media from './pages/Media'
 import ContactUs from './pages/ContactUs'
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/media" element={<Media />} />
         <Route path="/contact-us" element={<ContactUs />} />
       </Routes>
+      <Footer/>
     </Router>
   )
 }
