@@ -1,11 +1,250 @@
 import React from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay, Pagination } from 'swiper/modules'
+import { Link } from 'react-router-dom'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import { LuArrowRight } from "react-icons/lu";
 
+const slides = [
+  {
+    image: '/images/home/hero/heroSlider1.png',
+    title: (
+      <>
+        Cultivating <span className="text-orange-500">Trust,</span>
+        <br />
+        Growing Prosperity
+      </>
+    ),
+    description:
+      "Pakistan's trusted source for premium wheat, cotton, mustard, mung, sesame, corn & paddy seeds — plus expert cotton ginning services.",
+  },
+  {
+    image: '/images/home/hero/heroSlider2.png',
+    title: (
+      <>
+        Growing <span className="text-orange-500">Quality,</span>
+        <br />
+        Harvesting Success
+      </>
+    ),
+    description:
+      'Premium agricultural seeds developed to help farmers achieve stronger crops and better yields.',
+  },
+  {
+    image: '/images/home/hero/heroSlider3.png',
+    title: (
+      <>
+        Seeds for a <span className="text-orange-500">Better</span>
+        <br />
+        Tomorrow
+      </>
+    ),
+    description:
+      'Reliable agricultural solutions built around quality, innovation and the success of Pakistani farmers.',
+  },
+]
+const WhatWeDealIn = [
+  {
+    icon: '/images/home/section02/Icon.png',
+    title: 'Certified Seeds',
+    description: "High-purity, disease resistant seeds rigorously tested for optimal germination and yield potential."
+  }, {
+    icon: '/images/home/section02/Icon1.png',
+    title: 'Ginning Services',
+    description: "State-of-the-art ginning processes ensuring clean, high-grade cotton fiber separation and processing."
+  }, {
+    icon: '/images/home/section02/Icon2.png',
+    title: "Hybrid Varieties",
+    description: "Advanced hybrid seeds developed for superior adaptability to diverse climatic conditions and soil types."
+  }, {
+    icon: '/images/home/section02/Icon3.png',
+    title: "Fodder Solutions",
+    description: "Nutritious, high-yielding fodder seeds designed to support robust livestock health and productivity."
+  }
+]
+const stats=[
+  {
+    number:"16+",
+    title:"YEARS OF TRUST"
+  },{
+    number:"1K+",
+    title:"HAPPY FARMERS"
+  },{
+    number:"10+",
+    title:"SEED VARIETIES"
+  },{
+    number:"5+",
+    title:"CERTIFIED QUALITY"
+  }
+]
+const statofart=[
+  {detail:"Clean and efficient fiber separation"},
+  {detail:"High-capacity processing capabilities"},
+  {detail:"Strict quality control measures"}
+]
 const Home = () => {
   return (
-    <div>
-      <h1 className='text-red-600'>Welcome to the Home Page</h1>
-      <p>This is a simple home page component.</p>
-    </div>
+    <main>
+      <section className="w-full">
+        <Swiper
+          modules={[Autoplay, Pagination]}
+          slidesPerView={1}
+          loop
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          className="hero-swiper"
+        >
+          {slides.map((slide, index) => (
+            <SwiperSlide key={index}>
+              <div
+                className="relative min-h-[680px] w-full bg-cover bg-center bg-no-repeat md:min-h-[680px]"
+                style={{
+                  backgroundImage: `url(${slide.image})`,
+                }}
+              >
+                {/* Dark overlay */}
+                <div className="absolute inset-0 bg-black/45" />
+
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/30 to-transparent" />
+
+                {/* Content */}
+                <div className="relative z-10 mx-auto flex min-h-[680px] max-w-[1280px] items-center px-6 py-20 md:px-16">
+                  <div className="max-w-[650px]">
+                    <h1 className="text-4xl font-bold leading-[1.1] text-white sm:text-5xl md:text-6xl">
+                      {slide.title}
+                    </h1>
+
+                    <p className="mt-7 max-w-[620px] text-base leading-7 text-white/75 sm:text-lg">
+                      {slide.description}
+                    </p>
+
+                    {/* Buttons */}
+                    <div className="mt-9 flex flex-wrap gap-4">
+                      <a
+                        href="/products"
+                        className="rounded-lg bg-orange-500 px-8 py-4 text-sm font-semibold tracking-wide text-white transition hover:bg-orange-600"
+                      >
+                        Explore Our Products
+                      </a>
+
+                      <a
+                        href="/ginning"
+                        className="rounded-lg border border-white/40 bg-black/20 px-8 py-4 text-sm font-semibold tracking-wide text-white backdrop-blur-sm transition hover:bg-white/10"
+                      >
+                        Visit Ginning Unit
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </section>
+      <section className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 md:px-8 md:py-24 lg:px-12 lg:py-28 xl:px-16">
+        <div className="flex flex-col items-center justify-center gap-10 sm:gap-12 md:gap-14 lg:gap-16">
+
+          {/* Heading */}
+          <div className="flex max-w-2xl flex-col items-center justify-center gap-3 text-center sm:gap-4">
+            <h2 className="text-2xl font-semibold leading-tight text-[#171D17] sm:text-3xl md:text-[32px]">
+              What We Deal In
+            </h2>
+
+            <p className="text-sm leading-6 text-[#3E4A3E] sm:text-base">
+              Comprehensive agricultural solutions driving yield and purity across
+              all stages of farming.
+            </p>
+          </div>
+
+          {/* Cards */}
+          <div className="mt-0 grid w-full grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-6">
+            {WhatWeDealIn.map((item, index) => (
+              <div
+                key={index}
+                className="flex min-h-[320px] flex-col justify-between rounded-xl border border-[#BDCABA4D] bg-[#F5FBF0] p-6 sm:min-h-[340px] sm:p-7 lg:min-h-[360px] lg:p-8"
+              >
+                {/* Icon */}
+                <div className="flex size-14 shrink-0 items-center justify-center rounded-full bg-[#00873A1A]">
+                  <img
+                    src={item.icon}
+                    alt={item.title}
+                    className="size-[21px]"
+                  />
+                </div>
+
+                {/* Title */}
+                <h3 className="mt-8 text-xl font-bold leading-tight text-[#171D17] sm:text-[22px] lg:text-2xl">
+                  {item.title}
+                </h3>
+
+                {/* Description */}
+                <p className="mt-4 text-sm leading-6 text-[#3E4A3E] sm:text-base">
+                  {item.description}
+                </p>
+
+                {/* Link */}
+                <Link
+                  to="/learn-more"
+                  className="mt-6 w-fit text-sm font-semibold text-[#00873A] transition hover:underline"
+                >
+                  Learn More
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className='w-full bg-[#1E9E4A] py-16'>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-[1280px] mx-auto px-4">
+          {stats.map((item,index)=>{
+            return(
+              <div key={index} className='flex flex-col items-center justify-center gap-2'>
+                <h3 className='text-[56px] font-bold text-white'>{item.number}</h3>
+                <p className='text-[14px] font-semibold text-white/80'>{item.title}</p>
+              </div>
+            )
+          })}
+        </div>
+      </section>
+      <section className='mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 md:px-8 md:py-24 lg:px-20 lg:py-32'>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div className="">
+
+            <img src="/images/home/section05/Container.png" alt="" className='w-full' />
+            </div>
+            <div className="flex flex-col gap-4">
+              <h2 className="text-2xl font-semibold leading-tight text-[#171D17] sm:text-3xl md:text-[32px]">State-of-the-Art Cotton Ginning</h2>
+              <p className="text-[18px] leading-6 text-[#3E4A3E] sm:text-[14px]">
+                Our modern ginning facility is equipped with advanced machinery to ensure the highest quality processing of raw cotton. We pride ourselves on maintaining the integrity of the fiber while maximizing output efficiency.
+              </p>
+              <ul>
+                {statofart.map((item,index)=>{
+                  return(
+                    <li key={index} className='flex gap-2 items-center'>
+                      <img src="/images/home/section05/tick.png" alt="" className='size-4' />
+                      <p className="text-[14px] leading-6 text-[#3E4A3E] gap-3 py-2">
+                        {item.detail}
+                      </p>
+                    </li>
+                )
+                })}
+              </ul>
+              <Link to="/learn-more" className="flex items-center gap-2 text-[16px] font-semibold text-[#F5821F] transition hover:underline">
+                Learn more about our ginning process
+                <LuArrowRight />
+              </Link>
+            </div>
+          </div>
+      </section>
+
+    </main>
   )
 }
 
