@@ -83,9 +83,15 @@ const statofart=[
   {detail:"High-capacity processing capabilities"},
   {detail:"Strict quality control measures"}
 ]
+const whyChooseUs=[
+  {icons:"/images/home/section06/Icon1.png",title:"Guaranteed Quality",description:"Every batch undergoes rigorous testing to ensure it meets our strict standards for germination and purity."},
+  {icons:"/images/home/section06/Icon2.png",title:"Expert Guidance",description:"Our team of agronomists provides comprehensive support to help you maximize your crop yield."},
+  {icons:"/images/home/section06/Icon3.png",title:"Timely Delivery",description:"We ensure your seeds reach you right on time for the optimal sowing season."}
+]
 const Home = () => {
   return (
     <main>
+      {/* hero */}
       <section className="w-full">
         <Swiper
           modules={[Autoplay, Pagination]}
@@ -148,6 +154,7 @@ const Home = () => {
           ))}
         </Swiper>
       </section>
+      {/* what we deal in */}
       <section className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 md:px-8 md:py-24 lg:px-12 lg:py-28 xl:px-16">
         <div className="flex flex-col items-center justify-center gap-10 sm:gap-12 md:gap-14 lg:gap-16">
 
@@ -192,15 +199,16 @@ const Home = () => {
                 {/* Link */}
                 <Link
                   to="/learn-more"
-                  className="mt-6 w-fit text-sm font-semibold text-[#00873A] transition hover:underline"
+                  className="flex items-center gap-2 mt-6 w-fit text-sm font-semibold text-[#00873A] transition hover:underline"
                 >
-                  Learn More
+                  Learn More <LuArrowRight />
                 </Link>
               </div>
             ))}
           </div>
         </div>
       </section>
+      {/* stats */}
       <section className='w-full bg-[#1E9E4A] py-16'>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-[1280px] mx-auto px-4">
           {stats.map((item,index)=>{
@@ -213,6 +221,7 @@ const Home = () => {
           })}
         </div>
       </section>
+      {/* State-of-the-Art Cotton Ginning */}
       <section className='mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 md:px-8 md:py-24 lg:px-20 lg:py-32'>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div className="">
@@ -240,6 +249,28 @@ const Home = () => {
                 Learn more about our ginning process
                 <LuArrowRight />
               </Link>
+            </div>
+          </div>
+      </section>
+      {/* why choose us */}
+      <section className=' bg-[#EFF6EB] px-4 py-16 sm:px-6 sm:py-20 md:px-8 md:py-24 lg:px-20 lg:py-32'>
+          <div className="mx-auto max-w-[1280px] flex flex-col gap-14">
+            <div className="text-center">
+              <h2 className='text-[#171D17] text-[32px] font-semibold'>Why Choose Wafa Seeds</h2>
+            </div>
+            <div className="grid md:grid-cols-3  grid-cols-1 gap-8 ">
+              {whyChooseUs.map((item,index)=>{
+                return(
+                  <div className="bg-[#F5FBF0] border border-[#BDCABA33] p-8 rounded-2xl gap-3 " key={index}>
+                    
+                    <div className="bg-[#1E9E4A1A] rounded-lg size-12 flex justify-center items-center">
+                      <img src={item.icons} alt="icon" />
+                    </div>
+                    <h2 className='pt-3 text-[#171D17] text-[24px] font-semibold'>{item.title}</h2>
+                    <p className='text-[#3E4A3E] text-[16px]'>{item.description}</p>
+                  </div>
+                )
+              })}
             </div>
           </div>
       </section>
