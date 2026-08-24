@@ -88,6 +88,10 @@ const whyChooseUs=[
   {icons:"/images/home/section06/Icon2.png",title:"Expert Guidance",description:"Our team of agronomists provides comprehensive support to help you maximize your crop yield."},
   {icons:"/images/home/section06/Icon3.png",title:"Timely Delivery",description:"We ensure your seeds reach you right on time for the optimal sowing season."}
 ]
+const testimonial=[
+  {message:"Since switching to Wafa Gold-21, my wheat yield has increased by 15%. The support from their team hasbeen invaluable.",writer:"- Muhammad Ali, Rahim Yar Khan"},
+  {message:"The quality of their BT cotton seed is exceptional. We've seen significantly less pest damage and higher boll retention.",writer:"- Tariq Mehmood, Multan"},
+]
 const Home = () => {
   return (
     <main>
@@ -254,7 +258,7 @@ const Home = () => {
       </section>
       {/* why choose us */}
       <section className=' bg-[#EFF6EB] px-4 py-16 sm:px-6 sm:py-20 md:px-8 md:py-24 lg:px-20 lg:py-32'>
-          <div className="mx-auto max-w-[1280px] flex flex-col gap-14">
+          <div className="mx-auto max-w-[1280px] flex flex-col gap-12">
             <div className="text-center">
               <h2 className='text-[#171D17] text-[32px] font-semibold'>Why Choose Wafa Seeds</h2>
             </div>
@@ -274,6 +278,47 @@ const Home = () => {
             </div>
           </div>
       </section>
+      {/* what farmer says */}
+      <section className='bg-[#F5FBF0] px-4 py-16 sm:px-6 sm:py-20 md:px-8 md:py-24 lg:px-20 lg:py-32'>
+          <div className="mx-auto max-w-[1280px] flex flex-col gap-12">
+            <div className="flex flex-col gap-4 items-center">
+              <h2 className='text-[#171D17] text-[32px] font-semibold'>What Our Farmers Say</h2>
+              <p className='text-[#3E4A3E] text-[16px]'>Hear from the people who grow with Wafa Seeds.</p>
+            </div>
+            <div className="grid sm:grid-cols-2 grid-cols-1 gap-8">
+              {testimonial.map((item,index)=>{
+                return(
+                  <div className="p-8 rounded-2xl gap-4 border-l-4 border-[#1E9E4A] " key={index}>
+                    <p className='text-[#3E4A3E] text-[18px]'>{item.message}</p>
+                    <p className='text-[#171D17] text-[18px] font-semibold'>{item.writer}</p>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+      </section>
+
+      {/* last section */}
+      <section className="bg-[#F5FBF0] px-4 py-12 sm:px-6 sm:py-16 md:px-8 md:py-20 lg:px-12 lg:py-28">
+  <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-5 rounded-2xl bg-gradient-to-r from-[#F5821F] to-[#1E9E4A] px-5 py-10 text-center sm:rounded-3xl sm:px-8 sm:py-12 md:px-12 md:py-14 lg:px-16 lg:py-16">
+    
+    <h2 className="max-w-4xl text-[clamp(2rem,5vw,3.5rem)] font-bold leading-tight text-white">
+      Ready to boost your harvest?
+    </h2>
+
+    <p className="max-w-2xl text-sm leading-6 text-white/90 sm:text-base md:text-lg">
+      Get in touch with our experts today to find the perfect seed varieties
+      and agricultural solutions for your specific needs.
+    </p>
+
+    <Link
+      to="/contact"
+      className="mt-2 rounded-lg bg-white px-7 py-3 text-sm font-bold text-[#1E9E4A] transition-colors hover:bg-gray-100 sm:px-10 sm:text-base"
+    >
+      Contact Us Now
+    </Link>
+  </div>
+</section>
 
     </main>
   )
