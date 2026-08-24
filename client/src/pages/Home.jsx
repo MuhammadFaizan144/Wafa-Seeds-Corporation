@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Pagination } from 'swiper/modules'
 import { Link } from 'react-router-dom'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import { LuArrowRight } from "react-icons/lu";
+import { AiOutlineDown } from "react-icons/ai";
 
 const slides = [
   {
@@ -63,36 +64,74 @@ const WhatWeDealIn = [
     description: "Nutritious, high-yielding fodder seeds designed to support robust livestock health and productivity."
   }
 ]
-const stats=[
+const stats = [
   {
-    number:"16+",
-    title:"YEARS OF TRUST"
-  },{
-    number:"1K+",
-    title:"HAPPY FARMERS"
-  },{
-    number:"10+",
-    title:"SEED VARIETIES"
-  },{
-    number:"5+",
-    title:"CERTIFIED QUALITY"
+    number: "16+",
+    title: "YEARS OF TRUST"
+  }, {
+    number: "1K+",
+    title: "HAPPY FARMERS"
+  }, {
+    number: "10+",
+    title: "SEED VARIETIES"
+  }, {
+    number: "100%",
+    title: "CERTIFIED QUALITY"
   }
 ]
-const statofart=[
-  {detail:"Clean and efficient fiber separation"},
-  {detail:"High-capacity processing capabilities"},
-  {detail:"Strict quality control measures"}
+const statofart = [
+  { detail: "Clean and efficient fiber separation" },
+  { detail: "High-capacity processing capabilities" },
+  { detail: "Strict quality control measures" }
 ]
-const whyChooseUs=[
-  {icons:"/images/home/section06/Icon1.png",title:"Guaranteed Quality",description:"Every batch undergoes rigorous testing to ensure it meets our strict standards for germination and purity."},
-  {icons:"/images/home/section06/Icon2.png",title:"Expert Guidance",description:"Our team of agronomists provides comprehensive support to help you maximize your crop yield."},
-  {icons:"/images/home/section06/Icon3.png",title:"Timely Delivery",description:"We ensure your seeds reach you right on time for the optimal sowing season."}
+const whyChooseUs = [
+  { icons: "/images/home/section06/Icon1.png", title: "Guaranteed Quality", description: "Every batch undergoes rigorous testing to ensure it meets our strict standards for germination and purity." },
+  { icons: "/images/home/section06/Icon2.png", title: "Expert Guidance", description: "Our team of agronomists provides comprehensive support to help you maximize your crop yield." },
+  { icons: "/images/home/section06/Icon3.png", title: "Timely Delivery", description: "We ensure your seeds reach you right on time for the optimal sowing season." }
 ]
-const testimonial=[
-  {message:"Since switching to Wafa Gold-21, my wheat yield has increased by 15%. The support from their team hasbeen invaluable.",writer:"- Muhammad Ali, Rahim Yar Khan"},
-  {message:"The quality of their BT cotton seed is exceptional. We've seen significantly less pest damage and higher boll retention.",writer:"- Tariq Mehmood, Multan"},
+const testimonial = [
+  { message: "Since switching to Wafa Gold-21, my wheat yield has increased by 15%. The support from their team hasbeen invaluable.", writer: "- Muhammad Ali, Rahim Yar Khan" },
+  { message: "The quality of their BT cotton seed is exceptional. We've seen significantly less pest damage and higher boll retention.", writer: "- Tariq Mehmood, Multan" },
 ]
+const faqs = [
+
+  {
+
+    question: "Where can I purchase Wafa Seeds?",
+
+    answer:
+
+      "You can purchase Wafa Seeds through our authorized dealers and distributors. Contact our team to find the nearest supplier.",
+
+  },
+
+  {
+
+    question: "Do you offer bulk discounts for large farms?",
+
+    answer:
+
+      "Yes, we offer special pricing and bulk discounts for large farms and agricultural businesses. Contact us for more information.",
+
+  },
+
+  {
+
+    question: "What crops do you provide seeds for?",
+
+    answer:
+
+      "We provide high-quality seeds for a variety of crops, including wheat, cotton, corn, rice, and mustard.",
+
+  },
+
+];
 const Home = () => {
+  const [openIndex, setOpenIndex] = useState(null)
+
+  const toggleFAQ = (index) => {
+    setOpenIndex(openIndex === index ? null : index)
+  }
   return (
     <main>
       {/* hero */}
@@ -215,8 +254,8 @@ const Home = () => {
       {/* stats */}
       <section className='w-full bg-[#1E9E4A] py-16'>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-[1280px] mx-auto px-4">
-          {stats.map((item,index)=>{
-            return(
+          {stats.map((item, index) => {
+            return (
               <div key={index} className='flex flex-col items-center justify-center gap-2'>
                 <h3 className='text-[56px] font-bold text-white'>{item.number}</h3>
                 <p className='text-[14px] font-semibold text-white/80'>{item.title}</p>
@@ -227,98 +266,159 @@ const Home = () => {
       </section>
       {/* State-of-the-Art Cotton Ginning */}
       <section className='mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 md:px-8 md:py-24 lg:px-20 lg:py-32'>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div className="">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="">
 
             <img src="/images/home/section05/Container.png" alt="" className='w-full' />
-            </div>
-            <div className="flex flex-col gap-4">
-              <h2 className="text-2xl font-semibold leading-tight text-[#171D17] sm:text-3xl md:text-[32px]">State-of-the-Art Cotton Ginning</h2>
-              <p className="text-[18px] leading-6 text-[#3E4A3E] sm:text-[14px]">
-                Our modern ginning facility is equipped with advanced machinery to ensure the highest quality processing of raw cotton. We pride ourselves on maintaining the integrity of the fiber while maximizing output efficiency.
-              </p>
-              <ul>
-                {statofart.map((item,index)=>{
-                  return(
-                    <li key={index} className='flex gap-2 items-center'>
-                      <img src="/images/home/section05/tick.png" alt="" className='size-4' />
-                      <p className="text-[14px] leading-6 text-[#3E4A3E] gap-3 py-2">
-                        {item.detail}
-                      </p>
-                    </li>
-                )
-                })}
-              </ul>
-              <Link to="/learn-more" className="flex items-center gap-2 text-[16px] font-semibold text-[#F5821F] transition hover:underline">
-                Learn more about our ginning process
-                <LuArrowRight />
-              </Link>
-            </div>
           </div>
+          <div className="flex flex-col gap-4">
+            <h2 className="text-2xl font-semibold leading-tight text-[#171D17] sm:text-3xl md:text-[32px]">State-of-the-Art Cotton Ginning</h2>
+            <p className="text-[18px] leading-6 text-[#3E4A3E] sm:text-[14px]">
+              Our modern ginning facility is equipped with advanced machinery to ensure the highest quality processing of raw cotton. We pride ourselves on maintaining the integrity of the fiber while maximizing output efficiency.
+            </p>
+            <ul>
+              {statofart.map((item, index) => {
+                return (
+                  <li key={index} className='flex gap-2 items-center'>
+                    <img src="/images/home/section05/tick.png" alt="" className='size-4' />
+                    <p className="text-[14px] leading-6 text-[#3E4A3E] gap-3 py-2">
+                      {item.detail}
+                    </p>
+                  </li>
+                )
+              })}
+            </ul>
+            <Link to="/learn-more" className="flex items-center gap-2 text-[16px] font-semibold text-[#F5821F] transition hover:underline">
+              Learn more about our ginning process
+              <LuArrowRight />
+            </Link>
+          </div>
+        </div>
       </section>
       {/* why choose us */}
       <section className=' bg-[#EFF6EB] px-4 py-16 sm:px-6 sm:py-20 md:px-8 md:py-24 lg:px-20 lg:py-32'>
-          <div className="mx-auto max-w-[1280px] flex flex-col gap-12">
-            <div className="text-center">
-              <h2 className='text-[#171D17] text-[32px] font-semibold'>Why Choose Wafa Seeds</h2>
-            </div>
-            <div className="grid md:grid-cols-3  grid-cols-1 gap-8 ">
-              {whyChooseUs.map((item,index)=>{
-                return(
-                  <div className="bg-[#F5FBF0] border border-[#BDCABA33] p-8 rounded-2xl gap-3 " key={index}>
-                    
-                    <div className="bg-[#1E9E4A1A] rounded-lg size-12 flex justify-center items-center">
-                      <img src={item.icons} alt="icon" />
-                    </div>
-                    <h2 className='pt-3 text-[#171D17] text-[24px] font-semibold'>{item.title}</h2>
-                    <p className='text-[#3E4A3E] text-[16px]'>{item.description}</p>
-                  </div>
-                )
-              })}
-            </div>
+        <div className="mx-auto max-w-[1280px] flex flex-col gap-12">
+          <div className="text-center">
+            <h2 className='text-[#171D17] text-[32px] font-semibold'>Why Choose Wafa Seeds</h2>
           </div>
+          <div className="grid md:grid-cols-3  grid-cols-1 gap-8 ">
+            {whyChooseUs.map((item, index) => {
+              return (
+                <div className="bg-[#F5FBF0] border border-[#BDCABA33] p-8 rounded-2xl gap-3 " key={index}>
+
+                  <div className="bg-[#1E9E4A1A] rounded-lg size-12 flex justify-center items-center">
+                    <img src={item.icons} alt="icon" />
+                  </div>
+                  <h2 className='pt-3 text-[#171D17] text-[24px] font-semibold'>{item.title}</h2>
+                  <p className='text-[#3E4A3E] text-[16px]'>{item.description}</p>
+                </div>
+              )
+            })}
+          </div>
+        </div>
       </section>
       {/* what farmer says */}
       <section className='bg-[#F5FBF0] px-4 py-16 sm:px-6 sm:py-20 md:px-8 md:py-24 lg:px-20 lg:py-32'>
-          <div className="mx-auto max-w-[1280px] flex flex-col gap-12">
-            <div className="flex flex-col gap-4 items-center">
-              <h2 className='text-[#171D17] text-[32px] font-semibold'>What Our Farmers Say</h2>
-              <p className='text-[#3E4A3E] text-[16px]'>Hear from the people who grow with Wafa Seeds.</p>
-            </div>
-            <div className="grid sm:grid-cols-2 grid-cols-1 gap-8">
-              {testimonial.map((item,index)=>{
-                return(
-                  <div className="p-8 rounded-2xl gap-4 border-l-4 border-[#1E9E4A] " key={index}>
-                    <p className='text-[#3E4A3E] text-[18px]'>{item.message}</p>
-                    <p className='text-[#171D17] text-[18px] font-semibold'>{item.writer}</p>
-                  </div>
-                )
-              })}
-            </div>
+        <div className="mx-auto max-w-[1280px] flex flex-col gap-12">
+          <div className="flex flex-col gap-4 items-center">
+            <h2 className='text-[#171D17] text-[32px] font-semibold'>What Our Farmers Say</h2>
+            <p className='text-[#3E4A3E] text-[16px]'>Hear from the people who grow with Wafa Seeds.</p>
           </div>
+          <div className="grid sm:grid-cols-2 grid-cols-1 gap-8">
+            {testimonial.map((item, index) => {
+              return (
+                <div className="p-8 rounded-2xl gap-4 border-l-4 border-[#1E9E4A] " key={index}>
+                  <p className='text-[#3E4A3E] text-[18px]'>{item.message}</p>
+                  <p className='text-[#171D17] text-[18px] font-semibold'>{item.writer}</p>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* faq */}
+      <section className="bg-white px-4 py-16 sm:px-6 sm:py-20 md:px-8 md:py-24 lg:px-16 lg:py-32">
+        <div className="mx-auto flex w-full max-w-[770px] flex-col items-center">
+
+          {/* Heading */}
+          <div className="mb-10 text-center sm:mb-12">
+            <h2 className="text-2xl font-semibold leading-tight text-[#171D17] sm:text-3xl md:text-[32px]">
+              Frequently Asked Questions
+            </h2>
+          </div>
+
+          {/* FAQ */}
+          <div className="flex w-full flex-col gap-3.5">
+            {faqs.map((item, index) => {
+              const isOpen = openIndex === index;
+
+              return (
+                <div
+                  key={item.question}
+                  className="w-full overflow-hidden rounded-xl bg-[#F5FBF0] text-[#171D17] transition-shadow duration-300"
+                >
+                  {/* Question */}
+                  <button
+                    type="button"
+                    onClick={() => toggleFAQ(index)}
+                    aria-expanded={isOpen}
+                    className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left sm:px-6 sm:py-6"
+                  >
+                    <span className="text-sm leading-6 sm:text-base">
+                      {item.question}
+                    </span>
+
+                    <span
+                      className={`shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180" : ""
+                        }`}
+                    >
+                      <AiOutlineDown className="text-base sm:text-lg" />
+                    </span>
+                  </button>
+
+                  {/* Answer */}
+                  <div
+                    className={`grid transition-all duration-300 ease-in-out  ${isOpen
+                        ? "grid-rows-[1fr] opacity-100"
+                        : "grid-rows-[0fr] opacity-0"
+                      }`}
+                  >
+                    <div className="overflow-hidden bg-white pt-4 border-2  border-[#f2f6ef] rounded-xl">
+                      <p className=" px-5 pb-5 text-sm leading-6 text-[#3E4A3E] sm:px-6 sm:pb-6 sm:text-base">
+                        {item.answer}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+        </div>
       </section>
 
       {/* last section */}
       <section className="bg-[#F5FBF0] px-4 py-12 sm:px-6 sm:py-16 md:px-8 md:py-20 lg:px-12 lg:py-28">
-  <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-5 rounded-2xl bg-gradient-to-r from-[#F5821F] to-[#1E9E4A] px-5 py-10 text-center sm:rounded-3xl sm:px-8 sm:py-12 md:px-12 md:py-14 lg:px-16 lg:py-16">
-    
-    <h2 className="max-w-4xl text-[clamp(2rem,5vw,3.5rem)] font-bold leading-tight text-white">
-      Ready to boost your harvest?
-    </h2>
+        <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-5 rounded-2xl bg-gradient-to-r from-[#F5821F] to-[#1E9E4A] px-5 py-10 text-center sm:rounded-3xl sm:px-8 sm:py-12 md:px-12 md:py-14 lg:px-16 lg:py-16">
 
-    <p className="max-w-2xl text-sm leading-6 text-white/90 sm:text-base md:text-lg">
-      Get in touch with our experts today to find the perfect seed varieties
-      and agricultural solutions for your specific needs.
-    </p>
+          <h2 className="max-w-4xl text-[clamp(2rem,5vw,3.5rem)] font-bold leading-tight text-white">
+            Ready to boost your harvest?
+          </h2>
 
-    <Link
-      to="/contact"
-      className="mt-2 rounded-lg bg-white px-7 py-3 text-sm font-bold text-[#1E9E4A] transition-colors hover:bg-gray-100 sm:px-10 sm:text-base"
-    >
-      Contact Us Now
-    </Link>
-  </div>
-</section>
+          <p className="max-w-2xl text-sm leading-6 text-white/90 sm:text-base md:text-lg">
+            Get in touch with our experts today to find the perfect seed varieties
+            and agricultural solutions for your specific needs.
+          </p>
+
+          <Link
+            to="/contact"
+            className="mt-2 rounded-lg bg-white px-7 py-3 text-sm font-bold text-[#1E9E4A] transition-colors hover:bg-gray-100 sm:px-10 sm:text-base"
+          >
+            Contact Us Now
+          </Link>
+        </div>
+      </section>
 
     </main>
   )

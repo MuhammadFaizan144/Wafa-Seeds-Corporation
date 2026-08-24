@@ -49,7 +49,7 @@ const Navbar = () => {
                     <span className={`block w-6 h-0.5 bg-[#3E4A3E] transition-transform ${isOpen ? "-rotate-45 -translate-y-2" : ""}`}></span>
                 </button>
 
-                <div className={`bg-[#F5F5F5] px-10 pb-5 lg:hidden w-full absolute right-0 top-20 overflow-hidden transition-all duration-300 rounded-bl-xl rounded-br-xl flex flex-col ${isOpen ? "max-h-[500px] opacity-100": "max-h-0 opacity-0"}`}>
+                <div className={`bg-[#F5F5F5] z-20 px-10 pb-5 lg:hidden w-full absolute right-0 top-20 overflow-hidden transition-all duration-300 rounded-bl-xl rounded-br-xl flex flex-col ${isOpen ? "max-h-[500px] opacity-100": "max-h-0 opacity-0"}`}>
                     <ul className="flex flex-col gap-4 py-4 text-[14px] font-semibold ">
                         {Navlinks.map((item,index)=>{
                             return(
