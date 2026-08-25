@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay, Pagination } from 'swiper/modules'
+import { Autoplay, Pagination, Navigation } from 'swiper/modules'
 import { Link } from 'react-router-dom'
 import 'swiper/css'
 import 'swiper/css/pagination'
-import { LuArrowRight } from "react-icons/lu";
+import { LuArrowRight, LuArrowLeft } from "react-icons/lu";
 import { AiOutlineDown } from "react-icons/ai";
-
+import { useRef } from 'react'
 const slides = [
   {
     image: '/images/home/hero/heroSlider1.png',
@@ -43,6 +43,48 @@ const slides = [
     ),
     description:
       'Reliable agricultural solutions built around quality, innovation and the success of Pakistani farmers.',
+  },
+]
+const featuredVarities = [
+  {
+    image: "/images/home/section03/wheat.png",
+    type: "wheat",
+    name: "Wafa Gold 21",
+    attribute: "High Yield",
+    description: "Rust-resistant variety with excellent grain weight and adaptability to late sowing.",
+    time: "Maturity: 140 Days"
+  },
+  {
+    image: "/images/home/section03/cotton.png",
+    type: "Cotton",
+    name: "Wafa Premium BT",
+    attribute: "Pest Resistant",
+    description: "Advanced BT cotton with superior boll retention and exceptional fiber length.",
+    time: "Maturity: 140 Days"
+  },
+  {
+    image: "/images/home/section03/green.png",
+    type: "Fodder",
+    name: "GreenMax Super",
+    attribute: "Fast Growth",
+    description: "Multi-cut sorghum hybrid providing highly nutritious, palatable green fodder.",
+    time: "Maturity: 140 Days"
+  },
+  {
+    image: "/images/home/section03/green.png",
+    type: "Fodder",
+    name: "GreenMax Super",
+    attribute: "Fast Growth",
+    description: "Multi-cut sorghum hybrid providing highly nutritious, palatable green fodder.",
+    time: "Maturity: 140 Days"
+  },
+  {
+    image: "/images/home/section03/green.png",
+    type: "Fodder",
+    name: "GreenMax Super",
+    attribute: "Fast Growth",
+    description: "Multi-cut sorghum hybrid providing highly nutritious, palatable green fodder.",
+    time: "Maturity: 140 Days"
   },
 ]
 const WhatWeDealIn = [
@@ -128,6 +170,7 @@ const faqs = [
 ];
 const Home = () => {
   const [openIndex, setOpenIndex] = useState(null)
+  const swiperRef = useRef(null)
 
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index)
@@ -141,7 +184,7 @@ const Home = () => {
           slidesPerView={1}
           loop
           autoplay={{
-            delay: 5000,
+            delay: 3000,
             disableOnInteraction: false,
           }}
           pagination={{
@@ -198,19 +241,21 @@ const Home = () => {
         </Swiper>
       </section>
       {/* what we deal in */}
-      <section className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 md:px-8 md:py-24 lg:px-12 lg:py-28 xl:px-16">
-        <div className="flex flex-col items-center justify-center gap-10 sm:gap-12 md:gap-14 lg:gap-16">
+      <section className="flex flex-col gap-12 py-16 px-4 sm:px-8 md:px-12 lg:px-20 bg-[#FFF4E5]">
+        <div className="w-full max-w-[1280px] mx-auto">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
 
-          {/* Heading */}
-          <div className="flex max-w-2xl flex-col items-center justify-center gap-3 text-center sm:gap-4">
-            <h2 className="text-2xl font-semibold leading-tight text-[#171D17] sm:text-3xl md:text-[32px]">
-              What We Deal In
-            </h2>
+            {/* Heading */}
+            <div className="flex max-w-2xl flex-col items-center justify-center gap-3 text-center sm:gap-4">
+              <h2 className="text-2xl font-semibold leading-tight text-[#171D17] sm:text-3xl md:text-[32px]">
+                What We Deal In
+              </h2>
 
-            <p className="text-sm leading-6 text-[#3E4A3E] sm:text-base">
-              Comprehensive agricultural solutions driving yield and purity across
-              all stages of farming.
-            </p>
+              <p className="text-sm leading-6 text-[#3E4A3E] sm:text-base">
+                Comprehensive agricultural solutions driving yield and purity across
+                all stages of farming.
+              </p>
+            </div>
           </div>
 
           {/* Cards */}
@@ -251,6 +296,111 @@ const Home = () => {
           </div>
         </div>
       </section>
+      {/* Featured Varities */}
+      <section className='bg-[#FFF4E5] px-4 py-16 sm:px-8 md:px-12 lg:px-20 lg:py-32'>
+        <div className="mx-auto max-w-[1280px] ">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+
+            <div>
+
+              <h2 className="text-2xl font-semibold leading-tight text-[#171D17] sm:text-3xl md:text-[32px]">
+
+                Featured Varieties
+
+              </h2>
+
+              <p className="mt-2 text-sm leading-6 text-[#3E4A3E] sm:text-base md:text-lg">
+
+                Discover our top-performing seed selections for the current season.
+
+              </p>
+
+            </div>
+
+            {/* Navigation */}
+
+            <div className="flex gap-2">
+
+              <button
+
+                type="button"
+
+                className="featured-prev flex size-12 shrink-0 items-center justify-center rounded-full border border-[#BDCABA]"
+
+              >
+
+                <LuArrowLeft />
+
+              </button>
+
+              <button
+
+                type="button"
+
+                className="featured-next flex size-12 shrink-0 items-center justify-center rounded-full bg-[#1E9E4A] text-white"
+
+              >
+
+                <LuArrowRight />
+
+              </button>
+
+            </div>
+
+          </div>
+          <Swiper
+            modules={[Autoplay, Pagination, Navigation]}
+            slidesPerView={1} loop={true}
+            autoplay={{ delay: 5000, disableOnInteraction: false }}
+            pagination={{ clickable: true, }}
+            spaceBetween={24}
+
+            navigation={{
+              prevEl: ".featured-prev",
+              nextEl: ".featured-next",
+            }}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 24,
+              },
+            }}
+            className="!pb-10 mt-8"
+          >
+
+            {featuredVarities.map((item, index) => (
+
+              <SwiperSlide key={index} className='!h-auto overflow-hidden bg-white rounded-xl '>
+                <div className="relative">
+                  <img src={item.image} alt="" className='w-full h-[256px] rounded-xl' />
+                  <div className="bg-[#FFF4E5] text-[#F5821F] top-3 left-3 absolute rounded-2xl py-0.5 px-2 text-center text-[12px]">{item.type}</div>
+                </div>
+                <div className="p-4 flex flex-col gap-2">
+                  <div className="flex justify-between">
+                    <h4 className='text-lg font-semibold leading-tight text-[#171D17] sm:text-xl md:text-[24px]'>{item.name}</h4>
+                    <div className="bg-[#FFF4E5] rounded-md py-0.5 px-2 text-center text-[#F5821F] justify-around text-[12px]">{item.attribute}</div>
+                  </div>
+                  <div className="">
+                    <p className='text-[16px] leading-6 text-[#3E4A3E] sm:text-[14px]'>{item.description}</p>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className='text-[12px] leading-6 text-[#3E4A3E] sm:text-[10px]'>{item.time}</span>
+                    <Link className='text-[#1E9E4A] text-[16px]'>Views Specs</Link>
+                  </div>
+                </div>
+              </SwiperSlide>
+
+            ))}
+
+          </Swiper>
+
+        </div>
+
+      </section>
       {/* stats */}
       <section className='w-full bg-[#1E9E4A] py-16'>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-[1280px] mx-auto px-4">
@@ -273,7 +423,7 @@ const Home = () => {
           </div>
           <div className="flex flex-col gap-4">
             <h2 className="text-2xl font-semibold leading-tight text-[#171D17] sm:text-3xl md:text-[32px]">State-of-the-Art Cotton Ginning</h2>
-            <p className="text-[18px] leading-6 text-[#3E4A3E] sm:text-[14px]">
+            <p className="text-[16px] leading-6 text-[#3E4A3E] sm:text-[14px]">
               Our modern ginning facility is equipped with advanced machinery to ensure the highest quality processing of raw cotton. We pride ourselves on maintaining the integrity of the fiber while maximizing output efficiency.
             </p>
             <ul>
@@ -380,8 +530,8 @@ const Home = () => {
                   {/* Answer */}
                   <div
                     className={`grid transition-all duration-300 ease-in-out  ${isOpen
-                        ? "grid-rows-[1fr] opacity-100"
-                        : "grid-rows-[0fr] opacity-0"
+                      ? "grid-rows-[1fr] opacity-100"
+                      : "grid-rows-[0fr] opacity-0"
                       }`}
                   >
                     <div className="overflow-hidden bg-white pt-4 border-2  border-[#f2f6ef] rounded-xl">
