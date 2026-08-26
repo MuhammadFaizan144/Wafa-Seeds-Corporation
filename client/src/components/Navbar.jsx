@@ -3,10 +3,11 @@ import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 const Navlinks = [
     { name: 'Home', path: '/' },
+    { name: 'About Us', path: '/about-us' },
     { name: 'Products', path: '/products' },
     { name: 'Publications', path: '/publications' },
     { name: 'Media', path: '/media' },
-    { name: 'About Us', path: '/about-us' }
+    { name: 'Contact Us', path: '/contact-us' },
 ]
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false)
