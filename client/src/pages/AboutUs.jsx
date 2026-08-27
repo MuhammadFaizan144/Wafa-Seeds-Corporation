@@ -1,5 +1,7 @@
-import React from 'react'
 import { Flag, Eye, Handshake, CircleCheck } from "lucide-react";
+import { FaChevronRight } from "react-icons/fa";
+
+
 const values = [
   "Integrity & Trust",
   "Scientific Rigor",
@@ -67,11 +69,15 @@ const AboutUs = () => {
   <section className="py-[60px] px-5 sm:px-8 md:py-[96px] md:px-[80px]">
     <div className="mx-auto flex max-w-[1280px] flex-col">
       
-      <div className="mb-6">
+      <div className="mb-6 flex items-center gap-2">
         <span className="text-[14px] text-[#4A4A4A]">
-          Home{" "}
-          <span className="text-[#F5821F]">About Us</span>
+          Home {" "} 
         </span>
+        <span className=' text-[#4A4A4A]'>
+
+          <FaChevronRight className='text-[10px]'/>
+        </span>
+          <span className="text-[#F5821F] text-[14px]"> About Us</span>
       </div>
 
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-6">
