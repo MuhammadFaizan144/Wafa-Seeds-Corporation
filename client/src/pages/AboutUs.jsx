@@ -77,7 +77,7 @@ const AboutUs = () => {
 
           <FaChevronRight className='text-[10px]'/>
         </span>
-          <span className="text-[#F5821F] text-[14px]"> About Us</span>
+          <span className="text-[#F5821F] text-[14px] font-bold"> About Us</span>
       </div>
 
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-6">

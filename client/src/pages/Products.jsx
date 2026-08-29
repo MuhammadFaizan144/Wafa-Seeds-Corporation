@@ -1,4 +1,78 @@
+import { Leaf, Bug, Ruler, Droplets, Sprout, Sun } from "lucide-react";
+import { useState } from "react";
+import { FaChevronRight } from "react-icons/fa";
+const tabContent = {
 
+  Overview: {
+    title: "Revolutionizing Cotton Yields",
+    description:
+      "Wafa BT-100 represents the pinnacle of modern seed technology, combining extraordinary yield potential with robust resistance to common pests. Developed specifically for diverse regional climates, it ensures farmers can maximize their output while minimizing chemical interventions.",
+    features: [
+      {
+        icon: Leaf,
+        title: "Exceptional Fiber Length",
+        description:
+          "Produces long, strong fibers highly sought after by textile manufacturers.",
+      },
+      {
+        icon: Bug,
+        title: "Enhanced Pest Resistance",
+        description:
+          "Built-in tolerance against bollworms reduces pesticide reliance by up to 40%.",
+      },
+    ],
+  },
+  Specifications: {
+    title: "Premium Seed Specifications",
+    description:
+      "Wafa BT-100 has been developed with carefully selected genetic traits to deliver consistent performance, excellent fiber quality, and strong field adaptability.",
+    features: [
+      {
+        icon: Ruler,
+        title: "High Yield Potential",
+        description:
+          "Designed to deliver excellent yield performance under suitable growing conditions.",
+      },
+      {
+        icon: Leaf,
+        title: "Superior Fiber Quality",
+        description:
+          "Produces high-quality cotton fibers with excellent strength and desirable length.",
+      },
+      {
+        icon: Sprout,
+        title: "Strong Plant Structure",
+        description:
+          "Healthy plant architecture supports better boll development and harvesting.",
+      },
+    ],
+  },
+  Agronomy: {
+    title: "Optimized Agronomic Performance",
+    description:
+      "Wafa BT-100 is designed to perform across diverse agricultural conditions when supported by proper crop management, irrigation, and nutrient practices.",
+    features: [
+      {
+        icon: Droplets,
+        title: "Efficient Water Management",
+        description:
+          "Performs effectively with properly managed irrigation throughout the crop cycle.",
+      },
+      {
+        icon: Sun,
+        title: "Climate Adaptability",
+        description:
+          "Developed to maintain strong performance across a range of regional growing conditions.",
+      },
+      {
+        icon: Sprout,
+        title: "Balanced Crop Growth",
+        description:
+          "Supports healthy vegetative growth while maintaining strong reproductive development.",
+      },
+    ],
+  },
+};
 const services=[
   {icon:"/images/products/section4/icon1.png",
     name:"1. RAW COTTON INTAKE",
@@ -22,18 +96,85 @@ const partner=[
   {icon:"/images/products/section5/icon2.png",describe:"Nationwide Delivery"},
   {icon:"/images/products/section5/icon3.png",describe:"Certified Quality Assurance"},
 ]
+const tabs=Object.keys(tabContent)
 const Products = () => {
+  const[activeTab,setActiveTab]=useState("Overview")
+  const content=tabContent[activeTab];
   return (
     <main>
+      <div className="flex items-center gap-2 max-w-[1280px] mx-auto px-10 py-4">
+              <span className="text-[14px] text-[#4A4A4A]">
+                Home {" "} 
+              </span>
+              <span className=' text-[#4A4A4A]'>
+      
+                <FaChevronRight className='text-[10px]'/>
+              </span>
+                <span className="text-[#F5821F] text-[14px] font-bold"> Products</span>
+            </div>
       <section className="bg-[#FFF4E5] lg:py-32 py-24">
-        <div className="flex lg:flex-row flex-col lg:px-20 sm:px-14 px-6">
-          <div className="">
+        <div className="max-w-[1280px] mx-auto flex flex-col lg:px-20 sm:px-14 px-6 gap-12">
+          <div className="flex flex-col items-center text-center">
             <h2 className="lg:text-[32px] text-[26px] font-semibold text-[#1A1A1A]">Featured Highlight: Wafa BT-100</h2>
             
               <p className="lg:text-[18px] text-[16px] text-[#3E4A3E] max-w-[672px]">Discover the superior genetics and performance metrics of our flagship cotton seed variety.</p>
             
           </div>
-          <div className=""></div>
+          <div className="grid md:grid-cols-2 grid-cols-1 gap-12">
+            <div className="">
+              <img src="/images/products/section3/cotton.png" alt="" className="rounded-2xl w-full"/>
+            </div>
+            <div className="flex flex-col gap-8">
+              <div className="flex border-b border-[#DCDDD6]">
+                {tabs.map((tab)=>{
+                  const isActive=activeTab===tab
+                  return(
+                    <button aria-selected={isActive} onClick={()=>setActiveTab(tab)} className={`relative flex-1 pb-4 text-sm font-semibold tracking-wide transition-colors duration-200 ${
+                      isActive
+                        ? "text-[#119447]"
+                        : "text-[#4A4A43] hover:text-[#119447]"
+                    }`}>
+                      {tab}
+                      {/* Active underline */}
+
+                    <span
+
+                      className={`absolute bottom-[-1px] left-0 h-[2px] w-full bg-[#119447] transition-all duration-300 ${
+                        isActive
+                          ? "scale-x-100 opacity-100"
+                          : "scale-x-0 opacity-0"
+                      }`}
+                    />
+                    </button>
+                  )
+                })}
+              </div>
+              <div className="flex flex-col gap-4" key={activeTab}>
+                <h3 className="lg:text-[24px] text-[20px] font-semibold text-[#1A1A1A]">{content.title}</h3>
+                <p className="text-[12px] leading-6 text-[#3E4A3E] md:text-[16px]">{content.description}</p>
+               <div className="mt-7 space-y-5">
+                  {content.features.map((feature)=>{
+                    const Icon=feature.icon
+                    return(
+                      <div className="flex gap-3" key={feature}>
+                        <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#E1F5E6]">
+                          <Icon
+                          size={15}
+                          strokeWidth={2}
+                          className="text-[#13A24D]"/>
+                        </div>
+                        <div className="">
+                        <div className="text-[16px] font-medium text-[#242424]">{feature.title}</div>
+                        <div className="mt-1 text-[16px] leading-6 text-[#4D514A]">{feature.description}</div>
+
+                        </div>
+                      </div>
+                    )
+                  })}
+               </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
       <section className='lg:py-32 py-24 bg-[#FAFAF7]'>
