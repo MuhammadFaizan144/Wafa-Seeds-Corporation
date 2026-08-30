@@ -1,6 +1,7 @@
-import { Leaf, Bug, Ruler, Droplets, Sprout, Sun } from "lucide-react";
+import { Leaf, Bug, Ruler, Droplets, Sprout, Sun, ArrowRight } from "lucide-react";
 import { useState } from "react";
 import { FaChevronRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 const tabContent = {
 
   Overview: {
@@ -96,9 +97,96 @@ const partner=[
   {icon:"/images/products/section5/icon2.png",describe:"Nationwide Delivery"},
   {icon:"/images/products/section5/icon3.png",describe:"Certified Quality Assurance"},
 ]
+const categories = [
+    "All",
+    "Wheat",
+    "Cotton",
+    "Mustard",
+    "Mung",
+    "Sesame",
+    "Corn",
+    "Paddy",
+    "Ginning Services",
+  ];
+  const products = [
+    {
+      id: 1,
+      category: "Cotton",
+      name: "Wafa BT-100",
+      description:
+        "High-yield BT cotton variety with excellent pest resistance and fiber quality.",
+      image: "/images/products/section1or2/image1.png",
+      meta: "Maturity: 140 Days",
+    },
+    {
+      id: 2,
+      category: "Wheat",
+      name: "Wafa Gold-24",
+      description:
+        "Premium rust-resistant wheat seed designed for maximum output per acre in diverse soil conditions.",
+      image: "/images/products/section1or2/image2.png",
+      meta: "Germination: 95%",
+    },
+    {
+      id: 3,
+      category: "Cotton",
+      name: "Wafa Star-X",
+      description:
+        "Drought-tolerant cotton variety ideal for arid regions, ensuring consistent yields.",
+      image: "/images/products/section1or2/image3.png",
+      meta: "Maturity: 135 Days",
+    },
+    {
+      id: 4,
+      category: "Mustard",
+      name: "Wafa Mustard-12",
+      description:
+        "High-performing mustard variety with excellent oil content and strong disease resistance.",
+      image: "/images/products/section1or2/image1.png",
+      meta: "Maturity: 125 Days",
+    },
+    {
+      id: 5,
+      category: "Mung",
+      name: "Wafa Mung-8",
+      description:
+        "Fast-growing mung bean variety with excellent grain quality and reliable production.",
+      image: "/images/products/section1or2/image1.png",
+      meta: "Maturity: 70 Days",
+    },
+    {
+      id: 6,
+      category: "Sesame",
+      name: "Wafa Sesame-10",
+      description:
+        "Premium sesame seed variety selected for high yield and excellent oil recovery.",
+      image: "/images/products/section1or2/image1.png",
+      meta: "Maturity: 110 Days",
+    },
+    {
+      id: 7,
+      category: "Corn",
+      name: "Wafa Corn-20",
+      description:
+        "High-yield corn hybrid with strong stalks and excellent grain production.",
+      image: "/images/products/section1or2/image1.png",
+      meta: "Maturity: 120 Days",
+    },
+    {
+      id: 8,
+      category: "Paddy",
+      name: "Wafa Paddy-15",
+      description:
+        "Premium paddy variety offering excellent grain quality and dependable field performance.",
+      image: "/images/products/section1or2/image1.png",
+      meta: "Maturity: 130 Days",
+    },
+  ];
 const tabs=Object.keys(tabContent)
 const Products = () => {
   const[activeTab,setActiveTab]=useState("Overview")
+  const[activeCategory,setActiveCategory]=useState("All")
+  const filteredProducts=activeCategory==="All" ?products:products.filter((product)=>product.category===activeCategory)
   const content=tabContent[activeTab];
   return (
     <main>
@@ -112,6 +200,48 @@ const Products = () => {
               </span>
                 <span className="text-[#F5821F] text-[14px] font-bold"> Products</span>
             </div>
+      <section className="bg-[#FFF4E5] py-32">
+        <div className="max-w-[1280px] mx-auto px-20 flex flex-col gap-6 items-center text-center">
+          <h2 className="lg:text-[56px] text-[40px] font-bold text-[#1A1A1A] max-w-[896px]">Our Complete <span className="text-[#1E9E4A]">Seed & Ginning</span> Product Line</h2>
+          <p className="lg:text-[18px] text-[16px] text-[#3E4A3E] max-w-[672px]">Cultivating prosperity through high-yield genetics and state-of-the-art processing. Explore our range of premium agricultural products.</p>
+          <div className="mt-4 flex flex-wrap justify-center gap-3">
+            {categories.map((category)=>{
+              const isActive=activeCategory===category
+              return(
+                <button className={`rounded-full border px-5 py-2 text-[13px] font-semibold transition-all duration-200 ${isActive?'border-[#F58220] bg-[#F58220] text-white':'border-[#D7D8D1] bg-white text-[#4A4A45] hover:border-[#1FA34A] hover:text-[#1FA34A]'}`} key={category} onClick={()=>setActiveCategory(category)}>
+                  {category}
+                </button>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+      <section className="bg-[#FAFAF7] py-32 px-20">
+        <div className="max-w-[1280px] mx-auto grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
+        {filteredProducts.map((products)=>{
+          return(
+            <div className="" key={products.id}>
+              <div className="relative rounded-xl">
+                  <img src={products.image} alt="" className='w-full h-[256px] rounded-xl' />
+                  <div className="bg-[#FFF4E5] text-[#F5821F] top-3 left-3 absolute rounded-2xl py-0.5 px-2 text-center text-[12px]">{products.category}</div>
+                </div>
+                <div className="p-4 flex flex-col gap-2">
+                  <div className="flex justify-between">
+                    <h4 className='text-lg font-semibold leading-tight text-[#171D17] sm:text-xl md:text-[24px]'>{products.name}</h4>
+                  </div>
+                  <div className="">
+                    <p className='text-[16px] leading-6 text-[#3E4A3E] sm:text-[14px]'>{products.description}</p>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className='text-[12px] leading-6 text-[#3E4A3E] sm:text-[10px]'>{products.meta}</span>
+                    <Link className='text-[#F5821F] flex justify-center gap-2 items-center text-[14px] font-bold'>Views Details <ArrowRight size={14} strokeWidth={3}/></Link>
+                  </div>
+                </div>
+            </div>
+          )
+        })}
+        </div>
+      </section>
       <section className="bg-[#FFF4E5] lg:py-32 py-24">
         <div className="max-w-[1280px] mx-auto flex flex-col lg:px-20 sm:px-14 px-6 gap-12">
           <div className="flex flex-col items-center text-center">
