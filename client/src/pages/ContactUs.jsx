@@ -8,6 +8,8 @@ const contactCard=[
   {icon:"/images/contactUs/contactCard/icon3.png",heading:"Mail",description:"wafaseeds@gmail.com"},
   {icon:"/images/contactUs/contactCard/icon4.png",heading:"Hours",description:"Mon - Sat:9:00 AM - 6:00 PM"},
 ]
+import { BiSend } from "react-icons/bi";
+
 const ContactUs = () => {
   return (
     <main className="bg-[#F5FBF0E5]">
@@ -39,6 +41,114 @@ const ContactUs = () => {
             })}
           </div>
         </section>
+        <section className="py-20 md:py-32 px-5 sm:px-10 lg:px-20">
+          <div className="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+            {/* Left */}
+            <div className="w-full">
+              <h4 className="text-[28px] leading-tight text-[#006B2D] font-semibold sm:text-[30px] lg:text-[32px]">
+                Send us a Message
+              </h4>
+
+              <p className="mt-4 max-w-[600px] text-[14px] leading-6 text-[#3E4A3E] sm:text-[16px] lg:text-[18px]">
+                Fill out the form below and our team will get back to you as soon as possible.
+              </p>
+
+              <form className="mt-8 flex flex-col gap-5">
+
+                {/* First + Last Name */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+            <div className="flex flex-col gap-2">
+              <label
+                htmlFor="firstName"
+                className="text-[14px] font-medium text-[#263526]"
+              >
+                First Name
+              </label>
+
+              <input
+                id="firstName"
+                type="text"
+                placeholder="Enter your first name"
+                className="h-[52px] w-full rounded-lg border border-[#D4DDD4] bg-white px-4 text-[14px] text-[#263526] placeholder:text-[#9AA49A] outline-none transition focus:border-[#006B2D] focus:ring-1 focus:ring-[#006B2D]/20"
+              />
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <label
+                htmlFor="lastName"
+                className="text-[14px] font-medium text-[#263526]"
+              >
+                Last Name
+              </label>
+
+              <input
+                id="lastName"
+                type="text"
+                placeholder="Enter your last name"
+                className="h-[52px] w-full rounded-lg border border-[#D4DDD4] bg-white px-4 text-[14px] text-[#263526] placeholder:text-[#9AA49A] outline-none transition focus:border-[#006B2D] focus:ring-1 focus:ring-[#006B2D]/20"
+              />
+            </div>
+
+          </div>
+
+          {/* Email */}
+          <div className="flex flex-col gap-2">
+            <label
+              htmlFor="email"
+              className="text-[14px] font-medium text-[#263526]"
+            >
+              Email Address
+            </label>
+
+            <input
+              id="email"
+              type="email"
+              placeholder="Enter your email address"
+              className="h-[52px] w-full rounded-lg border border-[#D4DDD4] bg-white px-4 text-[14px] text-[#263526] placeholder:text-[#9AA49A] outline-none transition focus:border-[#006B2D] focus:ring-1 focus:ring-[#006B2D]/20"
+            />
+          </div>
+
+        {/* Message */}
+        <div className="flex flex-col gap-2">
+          <label
+            htmlFor="message"
+            className="text-[14px] font-medium text-[#263526]"
+          >
+            Message
+          </label>
+
+          <textarea
+            id="message"
+            rows="6"
+            placeholder="Write your message..."
+            className="w-full resize-none rounded-lg border border-[#D4DDD4] bg-white px-4 py-3 text-[14px] text-[#263526] placeholder:text-[#9AA49A] outline-none transition focus:border-[#006B2D] focus:ring-1 focus:ring-[#006B2D]/20"
+          />
+        </div>
+
+        {/* Button */}
+        <button
+          type="submit"
+          className="w-fit flex items-center gap gap-2 rounded-lg bg-[#FF8927] px-8 py-3.5 text-[15px] font-medium text-white transition hover:bg-[#E97818] active:scale-[0.98]"
+        >
+          Send Message <BiSend className="text-xl"/>
+        </button>
+
+      </form>
+    </div>
+
+          {/* Right Image */}
+          <div className="flex w-full justify-center lg:justify-end">
+            <img
+              src="/images/contactUs/sendUsAMessage.png"
+              alt="Send us a message"
+              className="w-full max-w-[560px] h-auto object-contain"
+            />
+          </div>
+
+        </div>
+      </section>
         <section className="bg-[#E3EADF] py-32 ">
             <div className="px-20 max-w-[1280px] mx-auto">
               <div className="flex flex-col items-center gap-12">

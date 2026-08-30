@@ -241,9 +241,9 @@ const Home = () => {
         </Swiper>
       </section>
       {/* what we deal in */}
-      <section className="flex flex-col gap-12 py-16 px-4 sm:px-8 md:px-12 lg:px-20 bg-[#FFF4E5]">
-        <div className="w-full max-w-[1280px] mx-auto">
-          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+      <section className="py-32 px-4 sm:px-8 md:px-12 lg:px-20 bg-[#FAFAF7] ">
+        <div className="w-full max-w-[1280px] mx-auto flex flex-col gap-12 ">
+          <div className="flex flex-col gap-6 justify-center items-center">
 
             {/* Heading */}
             <div className="flex max-w-2xl flex-col items-center justify-center gap-3 text-center sm:gap-4">
@@ -275,12 +275,12 @@ const Home = () => {
                 </div>
 
                 {/* Title */}
-                <h3 className="mt-8 text-xl font-bold leading-tight text-[#171D17] sm:text-[22px] lg:text-2xl">
+                <h3 className="lg:mt-8 mt-6 text-xl font-bold leading-tight text-[#171D17] sm:text-[22px] lg:text-2xl">
                   {item.title}
                 </h3>
 
                 {/* Description */}
-                <p className="mt-4 text-sm leading-6 text-[#3E4A3E] sm:text-base">
+                <p className="lg:mt-4 mt-3 text-sm leading-6 text-[#3E4A3E] sm:text-base">
                   {item.description}
                 </p>
 
