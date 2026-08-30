@@ -15,7 +15,7 @@ const Navbar = () => {
         setIsOpen(false)
     }
     return (
-        <header className="bg-[#F5F5F5] ">
+        <header className="bg-[#F5FBF0E5] border-b ">
 
             <nav className="flex relative justify-between items-center  max-w-[1280px] mx-auto px-4 py-2">
                 <div className="flex justify-between items-center w-full">
