@@ -21,7 +21,6 @@ const timelineData = [
     date: (
       <>
         Oct 15,
-        <br />
         2024
       </>
     ),
@@ -35,7 +34,6 @@ const timelineData = [
     date: (
       <>
         Sep 28,
-        <br />
         2024
       </>
     ),
@@ -49,7 +47,6 @@ const timelineData = [
     date: (
       <>
         Aug 12,
-        <br />
         2024
       </>
     ),
@@ -149,20 +146,20 @@ const Media = () => {
         </div>
       </section>
        <section className="bg-[#FFF4E5] py-24 lg:py-32 px-6 sm:px-10 lg:px-20">
-      <div className="max-w-[1280px] mx-auto">
+        <div className="max-w-[1280px] mx-auto">
 
-        {/* Heading */}
-        <h2 className="text-[32px] sm:text-[36px] lg:text-[34px] font-bold text-[#1A1A1A] mb-12 lg:mb-14">
-          Press & Events Timeline
-        </h2>
+          {/* Heading */}
+          <h2 className="text-[32px] sm:text-[36px] lg:text-[34px] font-bold text-[#1A1A1A] mb-12 lg:mb-14">
+            Press & Events Timeline
+          </h2>
 
-        {/* Timeline */}
-        <div className="relative">
+          {/* Timeline */}
+          <div className="relative">
 
-          {/* Vertical Line */}
-          <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-[#CDE4CC] hidden md:block" />
+            {/* Vertical Line */}
+            <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-[#CDE4CC] hidden md:block" />
 
-          <div className="flex flex-col gap-12 lg:gap-12">
+            <div className="flex flex-col gap-12 lg:gap-12">
             {timelineData.map((item, index) => (
               <div
                 key={index}
@@ -176,7 +173,7 @@ const Media = () => {
                   </span>
 
                   {/* Timeline Dot */}
-                  <span className="hidden md:block absolute -right-[34px] top-[10px] w-[8px] h-[8px] rounded-full bg-[#159447]" />
+                  <span className="hidden md:block absolute -right-[10px] top-[8px] w-[8px] h-[8px] rounded-full bg-[#159447]" />
                 </div>
 
                 {/* Content Card */}
@@ -194,17 +191,17 @@ const Media = () => {
                   </span>
 
                   {/* Title */}
-                  <h3 className="text-[24px] sm:text-[25px] lg:text-[25px] leading-8 font-bold text-[#202020] mb-3">
+                  <h3 className="text-[20px] sm:text-[22px] lg:text-[24px] leading-8 font-bold text-[#1A1A1A] mb-3">
                     {item.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-[15px] sm:text-[16px] leading-6 text-[#555555] max-w-[900px]">
+                  <p className="text-[14px] sm:text-[16px] leading-6 text-[#555555] max-w-[900px]">
                     {item.description}
                   </p>
 
                   {/* Link */}
-                  <button className="mt-5 text-[15px] font-semibold text-[#159447] hover:text-[#0D7435] transition-colors">
+                  <button className="mt-5 text-[14px] md:text-[16px] font-semibold text-[#1E9E4A] hover:text-[#0D7435] transition-colors">
                     {item.link} →
                   </button>
                 </div>
@@ -244,52 +241,52 @@ const Media = () => {
 
         {/* Posts */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-  {socialPosts.map((post, index) => {
-    const Icon = post.icon;
+          {socialPosts.map((post, index) => {
+            const Icon = post.icon;
 
-    return (
-      <div
-        key={index}
-        className="bg-white rounded-[12px] overflow-hidden border border-[#EEEEEE] shadow-[0_1px_3px_rgba(0,0,0,0.08)]"
-      >
-        {/* Image */}
-        <div className="h-[192px] overflow-hidden">
-          <img
-            src={post.image}
-            alt="Wafa Seeds"
-            className="w-full h-full object-cover"
-          />
-        </div>
+            return (
+              <div
+                key={index}
+                className="bg-white rounded-[12px] overflow-hidden border border-[#EEEEEE] shadow-[0_1px_3px_rgba(0,0,0,0.08)]"
+              >
+                {/* Image */}
+                <div className="h-[192px] overflow-hidden">
+                  <img
+                    src={post.image}
+                    alt="Wafa Seeds"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
 
-        {/* Content */}
-        <div className="p-5">
-          {/* User row */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-[#159447] flex items-center justify-center text-white text-[12px] font-bold">
-                WS
+                {/* Content */}
+                <div className="p-5">
+                  {/* User row */}
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 rounded-full bg-[#159447] flex items-center justify-center text-white text-[12px] font-bold">
+                        WS
+                      </div>
+
+                      <span className="text-[14px] font-semibold text-[#292929]">
+                        Wafa Seeds
+                      </span>
+                    </div>
+
+                    {/* Action */}
+                    <button className="text-[#159447] text-[18px]">
+                      <Icon />
+                    </button>
+                  </div>
+
+                  {/* Text */}
+                  <p className="mt-3 text-[14px] leading-5 text-[#555555]">
+                    {post.text}
+                  </p>
+                </div>
               </div>
-
-              <span className="text-[14px] font-semibold text-[#292929]">
-                Wafa Seeds
-              </span>
-            </div>
-
-            {/* Action */}
-            <button className="text-[#159447] text-[18px]">
-              <Icon />
-            </button>
-          </div>
-
-          {/* Text */}
-          <p className="mt-3 text-[14px] leading-5 text-[#555555]">
-            {post.text}
-          </p>
+            );
+          })}
         </div>
-      </div>
-    );
-  })}
-</div>
 
       </div>
     </section>
