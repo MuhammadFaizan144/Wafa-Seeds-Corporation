@@ -2,9 +2,10 @@ import React from 'react'
 
 const Publications = () => {
   return (
-    <div>
+    <main>
+      <section></section>
       Publications
-    </div>
+    </main>
   )
 }
 
