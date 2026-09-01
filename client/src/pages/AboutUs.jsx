@@ -1,5 +1,6 @@
 import { Flag, Eye, Handshake, CircleCheck } from "lucide-react";
 import { FaChevronRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 
 const values = [
@@ -70,9 +71,9 @@ const AboutUs = () => {
     <div className="mx-auto flex max-w-[1280px] flex-col">
       
       <div className="mb-6 flex items-center gap-2">
-        <span className="text-[14px] text-[#4A4A4A]">
-          Home {" "} 
-        </span>
+        <Link to="/" className="text-[14px] text-[#4A4A4A]">
+          Home
+        </Link>
         <span className=' text-[#4A4A4A]'>
 
           <FaChevronRight className='text-[10px]'/>

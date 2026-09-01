@@ -14,9 +14,9 @@ const ContactUs = () => {
   return (
     <main className="bg-[#F5FBF0E5]">
        <div className="flex items-center gap-2 max-w-[1280px] mx-auto px-10 py-4">
-          <span className="text-[14px] text-[#4A4A4A]">
-            Home {" "} 
-          </span>
+          <Link to="/" className="text-[14px] text-[#4A4A4A]">
+            Home
+          </Link>
           <span className=' text-[#4A4A4A]'>
             <FaChevronRight className='text-[10px]'/>
           </span>

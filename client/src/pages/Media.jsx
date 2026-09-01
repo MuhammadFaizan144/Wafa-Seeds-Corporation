@@ -5,6 +5,7 @@ import {
   FaRegHeart,
 } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa"
+import { Link } from "react-router-dom";
 const categories=["All","Photos","Videos","Press"]
 const photo=[
   {image:"/images/media/section2/cotton.png",type:"cotton"},
@@ -85,9 +86,9 @@ const Media = () => {
   return (
     <main>
       <div className="flex items-center gap-2 max-w-[1280px] mx-auto px-10 py-4">
-        <span className="text-[14px] text-[#4A4A4A]">
+        <Link to="/" className="text-[14px] text-[#4A4A4A]">
           Home
-        </span>
+        </Link>
         <span className=' text-[#4A4A4A]'>
             
           <FaChevronRight className='text-[10px]'/>
