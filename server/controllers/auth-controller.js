@@ -40,10 +40,9 @@ const register=async(req,res)=>{
         res.status(200).json({
             message:"register successful",
             token:await userCreated.generateToken(),
-            userId:userCreated._id.toString()
+            userId:userCreated._id.toString(),
         })
         
-        res.status(200).json({message:userCreated})
     } catch (error) {
         res.status(500).json({message:'not register'})
     }
