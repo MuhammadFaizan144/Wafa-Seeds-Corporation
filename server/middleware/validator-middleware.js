@@ -3,10 +3,15 @@ const validate=(schema)=>async (req,res,next) => {
         const parsebody=await schema.parseAsync(req.body)
         req.body=parsebody
         next()
-    } catch (error) {
-        const message=error.issues[0].message
-        console.log(message)
-        res.status(400).json({msg:message})
+    } catch (err) {
+        const message=err.issues[0].message
+        const status=422
+        const error={
+            status,
+            message
+        }
+        console.log(error)
+        next(error)
     }
 }
 module.exports=validate
