@@ -5,8 +5,10 @@ const mongoose=require('mongoose');
 const adminRouter=require('./router/admin-router');
 const connectDB = require('./utils/db');
 const errorMiddleware = require('./middleware/error-middleware');
+const contactRouter = require('./router/contact-router');
 app.use(express.json());
 app.use("/api/auth",adminRouter);
+app.use('/api/form',contactRouter);
 app.use(errorMiddleware)
 const PORT=3000;
 connectDB().then(()=>{
