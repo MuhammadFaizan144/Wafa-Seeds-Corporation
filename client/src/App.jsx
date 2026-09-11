@@ -8,7 +8,7 @@ import Media from './pages/Media'
 import ContactUs from './pages/ContactUs'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-
+import Login from './pages/login'
 function App() {
 
   return (
@@ -21,6 +21,8 @@ function App() {
         <Route path="/publications" element={<Publications />} />
         <Route path="/media" element={<Media />} />
         <Route path="/contact-us" element={<ContactUs />} />
+
+        <Route path="/login" element={<Login />} />
       </Routes>
       <Footer/>
     </Router>
