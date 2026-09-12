@@ -4,6 +4,24 @@ import { useState } from "react";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [user,setUser]=useState({
+    email:'',
+    password:''
+  })
+  const handleInput=(e)=>{
+    console.log(e);
+    let name=e.target.name;
+    let value=e.target.value;
+    setUser({
+      ...user,
+      [name]:value
+    })
+
+  }
+  const handleSubmit=(e)=>{
+    e.preventDefault()
+    console.log(user)
+  }
 
   return (
     <main className="min-h-screen bg-[#FAFAF7]">
@@ -127,13 +145,13 @@ const Login = () => {
 
 
             {/* Login Card */}
-            <div className="rounded-2xl border border-[#BDCABA4D] bg-white p-6 shadow-[0_10px_40px_rgba(23,29,23,0.06)] sm:p-8">
+            <form onSubmit={handleSubmit} className="rounded-2xl border border-[#BDCABA4D] bg-white p-6 shadow-[0_10px_40px_rgba(23,29,23,0.06)] sm:p-8">
 
               {/* Email */}
               <div className="mb-5">
 
                 <label
-                  htmlFor="email"
+                  // htmlFor="email"
                   className="mb-2 block text-sm font-semibold text-[#171D17]"
                 >
                   Email Address
@@ -147,6 +165,11 @@ const Login = () => {
                     id="email"
                     type="email"
                     placeholder="Enter your email"
+                    required
+                    name="email"
+                    autoComplete="off"
+                    value={user.email}
+                    onChange={handleInput}
                     className="h-10 w-full rounded-lg border border-[#BDCABA] bg-[#FAFAF7] pl-12 pr-4  text-sm text-[#171D17] outline-none transition placeholder:text-[#3E4A3E]/45 focus:border-[#1E9E4A] focus:ring-4 focus:ring-[#1E9E4A1A]"
                   />
 
@@ -161,7 +184,7 @@ const Login = () => {
                 <div className="mb-2 flex items-center justify-between">
 
                   <label
-                    htmlFor="password"
+                    // htmlFor="password"
                     className="block text-sm font-semibold text-[#171D17]"
                   >
                     Password
@@ -175,9 +198,14 @@ const Login = () => {
 
                   <input
                     id="password"
+                    name="password"
+                    required
                     type={showPassword ? "text" : "password"}
                     placeholder="Enter your password"
-                    className="h-10 w-full rounded-lg border border-[#BDCABA] bg-[#FAFAF7] pl-12 pr-12 text-sm text-[#171D17] outline-none transition placeholder:text-[#3E4A3E]/45 focus:border-[#1E9E4A] focus:ring-4 focus:ring-[#1E9E4A1A]"
+                    autoComplete="off"
+                    value={user.password}
+                    onChange={handleInput}
+             state  className="h-10 w-full rounded-lg border border-[#BDCABA] bg-[#FAFAF7] pl-12 pr-12 text-sm text-[#171D17] outline-none transition placeholder:text-[#3E4A3E]/45 focus:border-[#1E9E4A] focus:ring-4 focus:ring-[#1E9E4A1A]"
                   />
 
                   <button
@@ -203,7 +231,7 @@ const Login = () => {
 
               {/* Login Button */}
               <button
-                type="button"
+                type="submit"
                 className="group flex h-10 w-full items-center justify-center gap-2 rounded-lg bg-[#1E9E4A] px-6 text-sm font-bold tracking-wide text-white transition hover:bg-[#17863E] active:scale-[0.99]"
               >
                 Sign In
@@ -212,7 +240,7 @@ const Login = () => {
               </button>
 
 
-            </div>
+            </form>
 
 
             {/* Bottom Message */}
