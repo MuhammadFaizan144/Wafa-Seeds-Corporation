@@ -9,8 +9,28 @@ const contactCard=[
   {icon:"/images/contactUs/contactCard/icon4.png",heading:"Hours",description:"Mon - Sat:9:00 AM - 6:00 PM"},
 ]
 import { BiSend } from "react-icons/bi";
+import { useState } from "react";
 
 const ContactUs = () => {
+  const[user,setUser]=useState({
+    firstName:"",
+    lastName:"",
+    email:"",
+    message:""
+  })
+  const handleInput=(e)=>{
+    console.log(e)
+    let name=e.target.name;
+    let value=e.target.value;
+    setUser({
+      ...user,
+      [name]:value
+    })
+  }
+  const handleSubmit=(e)=>{
+    e.preventDefault()
+    console.log(user)
+  }
   return (
     <main className="bg-[#F5FBF0E5]">
        <div className="flex items-center gap-2 max-w-[1280px] mx-auto px-10 py-4">
@@ -54,7 +74,7 @@ const ContactUs = () => {
                 Fill out the form below and our team will get back to you as soon as possible.
               </p>
 
-              <form className="mt-8 flex flex-col gap-5">
+              <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-5">
 
                 {/* First + Last Name */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -71,6 +91,11 @@ const ContactUs = () => {
                 id="firstName"
                 type="text"
                 placeholder="Enter your first name"
+                required
+                name="firstName"
+                autoComplete="off"
+                value={user.firstName}
+                onChange={handleInput}
                 className="h-[52px] w-full rounded-lg border border-[#D4DDD4] bg-white px-4 text-[14px] text-[#263526] placeholder:text-[#9AA49A] outline-none transition focus:border-[#006B2D] focus:ring-1 focus:ring-[#006B2D]/20"
               />
             </div>
@@ -86,6 +111,11 @@ const ContactUs = () => {
               <input
                 id="lastName"
                 type="text"
+                required
+                name="lastName"
+                autoComplete="off"
+                value={user.lastName}
+                onChange={handleInput}
                 placeholder="Enter your last name"
                 className="h-[52px] w-full rounded-lg border border-[#D4DDD4] bg-white px-4 text-[14px] text-[#263526] placeholder:text-[#9AA49A] outline-none transition focus:border-[#006B2D] focus:ring-1 focus:ring-[#006B2D]/20"
               />
@@ -105,6 +135,11 @@ const ContactUs = () => {
             <input
               id="email"
               type="email"
+              required
+              name="email"
+              autoComplete="off"
+              value={user.email}
+              onChange={handleInput}
               placeholder="Enter your email address"
               className="h-[52px] w-full rounded-lg border border-[#D4DDD4] bg-white px-4 text-[14px] text-[#263526] placeholder:text-[#9AA49A] outline-none transition focus:border-[#006B2D] focus:ring-1 focus:ring-[#006B2D]/20"
             />
@@ -122,6 +157,11 @@ const ContactUs = () => {
           <textarea
             id="message"
             rows="6"
+            required
+            name="message"
+            autoComplete="off"
+            value={user.message}
+            onChange={handleInput}
             placeholder="Write your message..."
             className="w-full resize-none rounded-lg border border-[#D4DDD4] bg-white px-4 py-3 text-[14px] text-[#263526] placeholder:text-[#9AA49A] outline-none transition focus:border-[#006B2D] focus:ring-1 focus:ring-[#006B2D]/20"
           />

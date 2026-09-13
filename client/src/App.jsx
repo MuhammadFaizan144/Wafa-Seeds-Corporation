@@ -9,6 +9,7 @@ import ContactUs from './pages/ContactUs'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Login from './pages/login'
+import Error from './pages/Error'
 function App() {
 
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/contact-us" element={<ContactUs />} />
 
         <Route path="/login" element={<Login />} />
+        <Route path='*' element={<Error/>}/>
       </Routes>
       <Footer/>
     </Router>
