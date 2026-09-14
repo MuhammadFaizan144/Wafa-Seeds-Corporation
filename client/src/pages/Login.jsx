@@ -18,9 +18,21 @@ const Login = () => {
     })
 
   }
-  const handleSubmit=(e)=>{
+  const handleSubmit=async(e)=>{
     e.preventDefault()
     console.log(user)
+    try {
+      const response=await fetch(`http://localhost:3000/api/auth/login`,{
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json",
+        },
+        body:JSON.stringify()
+      })
+      console.log(response)
+    } catch (error) {
+      console.log("Login",error)
+    }
   }
 
   return (
@@ -184,7 +196,7 @@ const Login = () => {
                 <div className="mb-2 flex items-center justify-between">
 
                   <label
-                    // htmlFor="password"
+                    htmlFor="password"
                     className="block text-sm font-semibold text-[#171D17]"
                   >
                     Password
@@ -205,7 +217,7 @@ const Login = () => {
                     autoComplete="off"
                     value={user.password}
                     onChange={handleInput}
-             state  className="h-10 w-full rounded-lg border border-[#BDCABA] bg-[#FAFAF7] pl-12 pr-12 text-sm text-[#171D17] outline-none transition placeholder:text-[#3E4A3E]/45 focus:border-[#1E9E4A] focus:ring-4 focus:ring-[#1E9E4A1A]"
+                    className="h-10 w-full rounded-lg border border-[#BDCABA] bg-[#FAFAF7] pl-12 pr-12 text-sm text-[#171D17] outline-none transition placeholder:text-[#3E4A3E]/45 focus:border-[#1E9E4A] focus:ring-4 focus:ring-[#1E9E4A1A]"
                   />
 
                   <button
