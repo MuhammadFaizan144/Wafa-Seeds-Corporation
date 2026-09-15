@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom";
 import { LuArrowRight, LuEye, LuEyeOff, LuLockKeyhole, LuMail } from "react-icons/lu";
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
+import axios from 'axios'
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [user,setUser]=useState({
     email:'',
     password:''
   })
+  const navigate=useNavigate()
   const handleInput=(e)=>{
     console.log(e);
     let name=e.target.name;
@@ -22,14 +24,13 @@ const Login = () => {
     e.preventDefault()
     console.log(user)
     try {
-      const response=await fetch(`http://localhost:3000/api/auth/login`,{
-        method:"POST",
-        headers:{
-          "Content-Type":"application/json",
-        },
-        body:JSON.stringify()
-      })
-      console.log(response)
+      const response=await axios.post(`http://localhost:3000/api/auth/login`,user)
+      
+      if(response.ok){
+        alert("login successful")
+        setUser({email:"",password:""})
+        navigate("/")
+      }
     } catch (error) {
       console.log("Login",error)
     }
