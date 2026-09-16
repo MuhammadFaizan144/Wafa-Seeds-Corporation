@@ -3,7 +3,10 @@ import { LuArrowRight, LuEye, LuEyeOff, LuLockKeyhole, LuMail } from "react-icon
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
+import { useDispatch } from "react-redux";
+import { storeToken } from "../redux/authSlice";
 const Login = () => {
+  const dispatch=useDispatch()
   const [showPassword, setShowPassword] = useState(false);
   const [user,setUser]=useState({
     email:'',
@@ -25,12 +28,13 @@ const Login = () => {
     console.log(user)
     try {
       const response=await axios.post(`http://localhost:3000/api/auth/login`,user)
+      const serverToken=response.data.token;
       
-      if(response.ok){
         alert("login successful")
+        dispatch(storeToken(serverToken))
         setUser({email:"",password:""})
         navigate("/")
-      }
+      
     } catch (error) {
       console.log("Login",error)
     }
