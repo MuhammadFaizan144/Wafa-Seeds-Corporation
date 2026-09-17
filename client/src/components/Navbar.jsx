@@ -1,5 +1,6 @@
 
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 const Navlinks = [
     { name: 'Home', path: '/' },
@@ -10,6 +11,9 @@ const Navlinks = [
     { name: 'Contact Us', path: '/contact-us' },
 ]
 const Navbar = () => {
+    const isLoggedIn=useSelector(
+        (state)=>state.auth.isLoggedIn
+    )
     const [isOpen, setIsOpen] = useState(false)
     const closeMenu = () => {
         setIsOpen(false)
@@ -41,6 +45,16 @@ const Navbar = () => {
                                 <p className="text-[#3E4A3E] text-[14px] font-semibold">0300 1234567</p>
                             </div>
                             <NavLink to="/contact-us" className='bg-[#F5821F] text-[14px] font-semibold py-[10px] px-6 text-white rounded-lg'>Get in Touch</NavLink>
+                        
+                    {isLoggedIn && (
+                                <NavLink
+                                    to="/logout"
+                                    className="bg-[#F5821F] text-[14px] font-semibold py-[10px] px-6 text-white rounded-lg"
+                                    onClick={closeMenu}
+                                >
+                                    Logout
+                                </NavLink>
+                                )}
                         </div>
                     </div>
                 </div>
@@ -70,6 +84,16 @@ const Navbar = () => {
                             <NavLink to="/contact-us" className='bg-[#F5821F] text-[14px] font-semibold py-[10px] px-6 text-white rounded-lg' onClick={closeMenu}>
                                 Get in Touch
                             </NavLink>
+                            
+                    {isLoggedIn && (
+                                <NavLink
+                                    to="/logout"
+                                    className="bg-[#F5821F] text-[14px] font-semibold py-[10px] px-6 text-white rounded-lg"
+                                    onClick={closeMenu}
+                                >
+                                    Logout
+                                </NavLink>
+                                )}
                     </div>
                 </div>
 
