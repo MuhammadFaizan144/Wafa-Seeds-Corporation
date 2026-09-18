@@ -47,4 +47,13 @@ const register=async(req,res)=>{
         res.status(500).json({message:'not register'})
     }
 }
-module.exports={home, register, login}
+const user=async (req,res) => {
+    try {
+        const userData=req.user
+        console.log(userData)
+        res.status(200).json({message:userData})
+    } catch (error) {
+        res.status(500).json({message:"user data is not getting"})
+    }
+}
+module.exports={home, register, login,user}
