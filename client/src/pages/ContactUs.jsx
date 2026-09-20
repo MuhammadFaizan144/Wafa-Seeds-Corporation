@@ -9,27 +9,47 @@ const contactCard=[
   {icon:"/images/contactUs/contactCard/icon4.png",heading:"Hours",description:"Mon - Sat:9:00 AM - 6:00 PM"},
 ]
 import { BiSend } from "react-icons/bi";
-import { useState } from "react";
-
+import { useState,useEffect } from "react";
+import { useDispatch,useSelector } from "react-redux";
+import {userAuthentication} from "../redux/authSlice"
 const ContactUs = () => {
-  const[user,setUser]=useState({
-    firstName:"",
-    lastName:"",
+  const dispatch=useDispatch()
+
+  const {user,isLoading}=useSelector((state)=>state.auth)
+
+  const[contact,setContact]=useState({
+    username:"",
     email:"",
     message:""
   })
+  useEffect(()=>{
+    if(!user){
+      dispatch(userAuthentication())
+    }
+  },[dispatch,user])
+
+  useEffect(()=>{
+    if(user){
+      setContact({
+        username: user.username||"",
+        email: user.email||"",
+        message:""
+      })
+    }
+  },[user])
+
   const handleInput=(e)=>{
     console.log(e)
     let name=e.target.name;
     let value=e.target.value;
-    setUser({
-      ...user,
+    setContact({
+      ...contact,
       [name]:value
     })
   }
   const handleSubmit=(e)=>{
     e.preventDefault()
-    console.log(user)
+    console.log(contact)
   }
   return (
     <main className="bg-[#F5FBF0E5]">
@@ -84,42 +104,24 @@ const ContactUs = () => {
                 htmlFor="firstName"
                 className="text-[14px] font-medium text-[#263526]"
               >
-                First Name
+                username
               </label>
 
               <input
-                id="firstName"
+                id="username"
                 type="text"
                 placeholder="Enter your first name"
                 required
-                name="firstName"
+                name="username"
                 autoComplete="off"
-                value={user.firstName}
+                value={contact.username}
                 onChange={handleInput}
                 className="h-[52px] w-full rounded-lg border border-[#D4DDD4] bg-white px-4 text-[14px] text-[#263526] placeholder:text-[#9AA49A] outline-none transition focus:border-[#006B2D] focus:ring-1 focus:ring-[#006B2D]/20"
               />
             </div>
 
-            <div className="flex flex-col gap-2">
-              <label
-                htmlFor="lastName"
-                className="text-[14px] font-medium text-[#263526]"
-              >
-                Last Name
-              </label>
-
-              <input
-                id="lastName"
-                type="text"
-                required
-                name="lastName"
-                autoComplete="off"
-                value={user.lastName}
-                onChange={handleInput}
-                placeholder="Enter your last name"
-                className="h-[52px] w-full rounded-lg border border-[#D4DDD4] bg-white px-4 text-[14px] text-[#263526] placeholder:text-[#9AA49A] outline-none transition focus:border-[#006B2D] focus:ring-1 focus:ring-[#006B2D]/20"
-              />
-            </div>
+            
+            
 
           </div>
 
@@ -138,7 +140,7 @@ const ContactUs = () => {
               required
               name="email"
               autoComplete="off"
-              value={user.email}
+              value={contact.email}
               onChange={handleInput}
               placeholder="Enter your email address"
               className="h-[52px] w-full rounded-lg border border-[#D4DDD4] bg-white px-4 text-[14px] text-[#263526] placeholder:text-[#9AA49A] outline-none transition focus:border-[#006B2D] focus:ring-1 focus:ring-[#006B2D]/20"
@@ -160,7 +162,7 @@ const ContactUs = () => {
             required
             name="message"
             autoComplete="off"
-            value={user.message}
+            value={contact.message}
             onChange={handleInput}
             placeholder="Write your message..."
             className="w-full resize-none rounded-lg border border-[#D4DDD4] bg-white px-4 py-3 text-[14px] text-[#263526] placeholder:text-[#9AA49A] outline-none transition focus:border-[#006B2D] focus:ring-1 focus:ring-[#006B2D]/20"
