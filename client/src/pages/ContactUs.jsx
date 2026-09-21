@@ -12,21 +12,24 @@ import { BiSend } from "react-icons/bi";
 import { useState,useEffect } from "react";
 import { useDispatch,useSelector } from "react-redux";
 import {userAuthentication} from "../redux/authSlice"
-const ContactUs = () => {
-  const dispatch=useDispatch()
-
-  const {user,isLoading}=useSelector((state)=>state.auth)
-
-  const[contact,setContact]=useState({
+import axios from "axios";
+const defaultcontact={
     username:"",
     email:"",
     message:""
-  })
+  }
+const ContactUs = () => {
+  const dispatch=useDispatch()
+
+  const {user}=useSelector((state)=>state.auth)
+
+  const[contact,setContact]=useState(defaultcontact)
+  
   useEffect(()=>{
-    if(!user){
-      dispatch(userAuthentication())
+    if( !user){
+      dispatch(userAuthentication());
     }
-  },[dispatch,user])
+  },[dispatch, user])
 
   useEffect(()=>{
     if(user){
@@ -47,9 +50,16 @@ const ContactUs = () => {
       [name]:value
     })
   }
-  const handleSubmit=(e)=>{
+  const handleSubmit=async(e)=>{
     e.preventDefault()
     console.log(contact)
+    try {
+      await axios.post(`http://localhost:3000/api/form/contact`,contact)
+      alert("Message sent successfully!");
+      setContact(defaultcontact)
+    } catch (error) {
+      console.log("contact error ",error)
+    }
   }
   return (
     <main className="bg-[#F5FBF0E5]">
