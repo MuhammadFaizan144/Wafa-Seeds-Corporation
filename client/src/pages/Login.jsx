@@ -29,14 +29,18 @@ const Login = () => {
     try {
       const response=await axios.post(`http://localhost:3000/api/auth/login`,user)
       const serverToken=response.data.token;
-      
+      if(response.status===200){
         alert("login successful")
         dispatch(storeToken(serverToken))
         setUser({email:"",password:""})
         navigate("/")
-      
+      }
     } catch (error) {
+      
       console.log("Login",error)
+      if(error.response){
+        alert(error.response.data.extraDetails?error.response.data.extraDetails:error.response.data.message)
+      }
     }
   }
 

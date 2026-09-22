@@ -4,11 +4,13 @@ const validate=(schema)=>async (req,res,next) => {
         req.body=parsebody
         next()
     } catch (err) {
-        const message=err.issues[0].message
+        const extraDetails=err.issues[0].message
+        const message="Fill the input properly"
         const status=422
         const error={
             status,
-            message
+            message,
+            extraDetails
         }
         console.log(error)
         next(error)

@@ -21,7 +21,7 @@ const login=async(req,res)=>{
                 userId:userExists._id.toString()
             })
         }else{
-            res.status(400).json({message:'Invalid password'})
+            res.status(400).json({message:'Invalid credential'})
         }
     }
     catch(error){
