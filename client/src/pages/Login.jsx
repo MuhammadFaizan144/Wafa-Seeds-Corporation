@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios'
 import { useDispatch } from "react-redux";
 import { storeToken } from "../redux/authSlice";
+import { toast } from "react-toastify";
 const Login = () => {
   const dispatch=useDispatch()
   const [showPassword, setShowPassword] = useState(false);
@@ -30,7 +31,7 @@ const Login = () => {
       const response=await axios.post(`http://localhost:3000/api/auth/login`,user)
       const serverToken=response.data.token;
       if(response.status===200){
-        alert("login successful")
+        toast.success("login successful")
         dispatch(storeToken(serverToken))
         setUser({email:"",password:""})
         navigate("/")
@@ -39,7 +40,7 @@ const Login = () => {
       
       console.log("Login",error)
       if(error.response){
-        alert(error.response.data.extraDetails?error.response.data.extraDetails:error.response.data.message)
+        toast.error(error.response.data.extraDetails?error.response.data.extraDetails:error.response.data.message)
       }
     }
   }
